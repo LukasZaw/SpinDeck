@@ -82,8 +82,5 @@ The device reports readiness with `DEVICE:READY` and sends input events such as 
 
 - The ESP32 currently keeps synchronized actions in RAM. The Windows application is the source of the saved configuration and resynchronizes the device after reconnecting.
 - The firmware supports up to 30 actions (`MAX_ACTIONS` in `Config.h`).
-- Do not commit `bin`, `obj`, `.vs` or local user settings to the repository.
 
 ## License
-
-No license has been selected yet. Add a `LICENSE` file before publishing the project for public reuse.
