@@ -65,6 +65,12 @@ namespace SpinDeck_Win_app
             // START VIEW
             ShowDeviceView();
 
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            Loaded -= MainWindow_Loaded;
             ApplyWindowSettings(_settingsManager.Settings);
         }
 

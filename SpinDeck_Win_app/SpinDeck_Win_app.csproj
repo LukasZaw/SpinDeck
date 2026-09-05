@@ -17,6 +17,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\SpinDeck.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Remove="System.Windows.Forms" />
   </ItemGroup>
 
