@@ -29,26 +29,11 @@ SpinDeck/
 
 ## Windows application
 
-### Requirements
-
-- Windows 10 or newer.
-- .NET 8 SDK.
-- Visual Studio 2022 or VS Code with the C# extension.
-
-### Run
-
-Open `SpinDeck_Win_app/SpinDeck_Win_app.sln` in Visual Studio and run the project, or use:
-
-```powershell
-dotnet restore SpinDeck_Win_app/SpinDeck_Win_app.csproj
-dotnet run --project SpinDeck_Win_app/SpinDeck_Win_app.csproj
-```
-
-The application uses `115200` baud for serial communication. Select the ESP32 COM port in the Device view and connect.
+Current application version: **v0.1.0**.
 
 ## ESP32 firmware
 
-### Requirements
+### Firmware requirements
 
 - Arduino IDE 2.x or PlatformIO.
 - ESP32 board support installed in the Arduino IDE.
@@ -61,14 +46,14 @@ The default serial speed is `115200`. Hardware pin assignments are documented in
 
 ## Default hardware mapping
 
-| Component | ESP32 pin |
-| --- | ---: |
-| TFT CS | GPIO 5 |
-| TFT RST | GPIO 4 |
-| TFT DC | GPIO 2 |
-| Encoder CLK | GPIO 32 |
-| Encoder DT | GPIO 33 |
-| Encoder switch | GPIO 25 |
+| Component      | ESP32 pin |
+| -------------- | --------: |
+| TFT CS         |    GPIO 5 |
+| TFT RST        |    GPIO 4 |
+| TFT DC         |    GPIO 2 |
+| Encoder CLK    |   GPIO 32 |
+| Encoder DT     |   GPIO 33 |
+| Encoder switch |   GPIO 25 |
 
 ## First start
 

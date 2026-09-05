@@ -4,6 +4,7 @@
 **/obj/
 *.user
 *.suo
+artifacts/
 
 # Local application data
 *.log

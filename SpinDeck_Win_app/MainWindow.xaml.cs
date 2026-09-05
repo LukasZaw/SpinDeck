@@ -83,7 +83,9 @@ namespace SpinDeck_Win_app
 
             var notifyIcon = new Forms.NotifyIcon
             {
-                Icon = System.Drawing.SystemIcons.Application,
+                Icon = System.Drawing.Icon.ExtractAssociatedIcon(
+                    Environment.ProcessPath ?? string.Empty)
+                    ?? System.Drawing.SystemIcons.Application,
                 Text = "SpinDeck",
                 ContextMenuStrip = contextMenu,
                 Visible = _settingsManager.Settings.MinimizeToTray
