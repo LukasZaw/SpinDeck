@@ -1,0 +1,184 @@
+﻿<UserControl x:Class="SpinDeck_Win_app.Views.DeviceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid RenderTransformOrigin="0.505,0.486">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <!-- ============================================= -->
+        <!-- HEADER -->
+        <!-- ============================================= -->
+
+        <StackPanel Grid.Row="0"
+                    Margin="0,0,0,30">
+
+            <TextBlock Text="Device"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource InkBrush}"/>
+
+            <TextBlock Text="Connection and configuration of ESP32"
+                       FontSize="14"
+                       Foreground="{StaticResource MutedBrush}"
+                       Margin="0,7,0,0"/>
+
+        </StackPanel>
+
+
+        <!-- ============================================= -->
+        <!-- CONNECTION CARD -->
+        <!-- ============================================= -->
+
+        <Border Grid.Row="1"
+                Background="{StaticResource SurfaceBrush}"
+                CornerRadius="8"
+                Padding="20"
+                Margin="0,0,0,10"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="1">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="180"/>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <!-- PORT -->
+
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Text="Port COM"
+                           VerticalAlignment="Center"
+                           Margin="0,0,10,15"/>
+
+                <ComboBox x:Name="PortComboBox"
+                          Grid.Row="0"
+                          Grid.Column="1"
+                          Height="32"
+                          Margin="0,0,10,15"/>
+
+                <Button Grid.Row="0"
+                        Grid.Column="2"
+                        Content="Refresh"
+                        Style="{StaticResource SecondaryButton}"
+                        Width="90"
+                        Height="32"
+                        HorizontalAlignment="Center"
+                        Click="RefreshButton_Click" Margin="0,0,0,15"/>
+
+
+                <!-- STATUS -->
+
+                <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           Text="Status"
+                           VerticalAlignment="Center"
+                           Margin="0,0,10,15"/>
+
+                <StackPanel Grid.Row="2"
+                            Grid.Column="1"
+                            Orientation="Horizontal"
+                            Margin="0,0,0,15">
+
+                    <Ellipse x:Name="StatusIndicator"
+                             Width="12"
+                             Height="12"
+                             Fill="#999999"
+                             Margin="0,0,8,0"
+                             VerticalAlignment="Center"/>
+
+                    <TextBlock x:Name="StatusText"
+                               Text="Disconnected"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center"/>
+
+                </StackPanel>
+
+
+                <!-- CONNECT -->
+
+                <Button x:Name="ConnectButton"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Content="Connect"
+                    Height="34"
+                    MinWidth="126"
+                    Padding="12,4"
+                        HorizontalAlignment="Left"
+                        Click="ConnectButton_Click"/>
+
+            </Grid>
+
+        </Border>
+
+
+        <!-- ============================================= -->
+        <!-- TEST COMMANDS -->
+        <!-- ============================================= -->
+
+        <Border Grid.Row="3"
+                Background="{StaticResource SurfaceBrush}"
+                CornerRadius="8"
+                Padding="20"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="1">
+
+            <StackPanel>
+
+                <TextBlock Text="Communication Test"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,15"/>
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Button x:Name="PingButton"
+                            Content="PING"
+                            Width="92"
+                            Height="34"
+                            Padding="10,4"
+                            Margin="0,0,10,0"
+                            Click="PingButton_Click"/>
+
+                    <Button x:Name="ScreenTestButton"
+                            Content="Screen test"
+                            Style="{StaticResource SecondaryButton}"
+                            Width="128"
+                            Height="34"
+                            Padding="10,4"
+                            Click="ScreenTestButton_Click"/>
+
+                </StackPanel>
+
+
+                <TextBox x:Name="LogTextBox"
+                         Height="166"
+                         Margin="0,20,0,0"
+                         IsReadOnly="True"
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"/>
+
+            </StackPanel>
+
+        </Border>
+
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,213 @@
+﻿<UserControl x:Class="SpinDeck_Win_app.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+        <!-- HEADER -->
+
+        <TextBlock Grid.Row="0"
+                   Text="Settings"
+                   FontSize="32"
+                   FontWeight="Bold"
+                   Foreground="{StaticResource InkBrush}"/>
+
+
+        <!-- APPLICATION -->
+
+        <GroupBox Grid.Row="2"
+                  Header="Application"
+                  Padding="20"
+                  Background="{StaticResource SurfaceBrush}"
+                  BorderBrush="{StaticResource BorderBrush}"
+                  BorderThickness="1">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <!-- AUTO START -->
+
+                <TextBlock Grid.Row="0"
+                           
+                           Grid.Column="0"
+                           Text="Start with Windows"
+                           VerticalAlignment="Center"
+                           Margin="0,0,10,15"/>
+
+                <CheckBox x:Name="AutoStartCheckBox"
+                          Grid.Row="0"
+                          Grid.Column="1"
+                          Content="Automatically start SpinDeck with Windows"
+                          VerticalAlignment="Center"
+                          Margin="0,0,0,15"/>
+
+
+                <!-- START MINIMIZED -->
+
+                <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Text="Start minimized"
+                           VerticalAlignment="Center"
+                           Margin="0,0,10,15"/>
+
+                <CheckBox x:Name="StartMinimizedCheckBox"
+                          Grid.Row="1"
+                          Grid.Column="1"
+                          Content="Start the application minimized"
+                          VerticalAlignment="Center"
+                          Margin="0,0,0,15"/>
+
+
+                <!-- MINIMIZE TO TRAY -->
+
+                <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           Text="System tray"
+                           VerticalAlignment="Center"/>
+
+                <CheckBox x:Name="MinimizeToTrayCheckBox"
+                          Grid.Row="2"
+                          Grid.Column="1"
+                          Content="Minimize SpinDeck to the system tray"
+                          VerticalAlignment="Center"/>
+
+            </Grid>
+
+        </GroupBox>
+
+
+        <!-- DEVICE -->
+
+        <GroupBox Grid.Row="4"
+                  Header="Device"
+                  Padding="20"
+                  Background="{StaticResource SurfaceBrush}"
+                  BorderBrush="{StaticResource BorderBrush}"
+                  BorderThickness="1">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <!-- DEVICE NAME -->
+
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Text="Device name"
+                           VerticalAlignment="Center"
+                           Margin="0,0,10,15"/>
+
+                <TextBox x:Name="DeviceNameTextBox"
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         Height="32"
+                         VerticalContentAlignment="Center"
+                         Margin="0,0,0,15"
+                         Text="SpinDeck"/>
+
+
+                <!-- DEFAULT PORT -->
+
+                <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Text="Default COM port"
+                           VerticalAlignment="Center"
+                           Margin="0,0,10,15"/>
+
+                <ComboBox x:Name="DefaultPortComboBox"
+                          Grid.Row="1"
+                          Grid.Column="1"
+                          Height="32"
+                          Margin="0,0,0,15"/>
+
+                <!-- BAUD RATE -->
+
+                <TextBlock Grid.Row="2"
+                   Grid.Column="0"
+                   Text="Baud rate"
+                   VerticalAlignment="Center"
+                   Margin="0,0,10,15"/>
+
+                        <TextBlock Grid.Row="2"
+                   Grid.Column="1"
+                   Text="115200"
+                   VerticalAlignment="Center"
+                   FontWeight="SemiBold"
+                   Margin="0,0,0,15"/>
+
+
+                <!-- AUTO CONNECT -->
+
+                <TextBlock Grid.Row="3"
+                           Grid.Column="0"
+                           Text="Auto connect"
+                           VerticalAlignment="Center"/>
+
+                <CheckBox x:Name="AutoConnectCheckBox"
+                          Grid.Row="3"
+                          Grid.Column="1"
+                          Content="Automatically connect to the default port"
+                          VerticalAlignment="Center"/>
+
+            </Grid>
+
+        </GroupBox>
+
+
+        <!-- COMMUNICATION -->
+
+        <GroupBox Grid.Row="6"
+                  Padding="20"
+                  Background="{StaticResource SurfaceBrush}"
+                  BorderBrush="{StaticResource BorderBrush}"
+                  BorderThickness="1">
+
+            <Button x:Name="SaveButton"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Content="Save settings"
+                    FontWeight="SemiBold"
+                    Width="140"
+                    Height="34"
+                    HorizontalAlignment="Left"
+                    Click="SaveButton_Click"/>
+
+        </GroupBox>
+
+    </Grid>
+
+</UserControl>

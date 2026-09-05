@@ -1,0 +1,21 @@
+# Visual Studio and .NET
+.vs/
+**/bin/
+**/obj/
+*.user
+*.suo
+
+# Local application data
+*.log
+SpinDeck_Win_app/.idea/
+
+# Arduino build and editor files
+.arduino15/
+*.elf
+*.hex
+*.bin
+*.uf2
+
+# OS files
+.DS_Store
+Thumbs.db

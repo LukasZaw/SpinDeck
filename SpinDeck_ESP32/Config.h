@@ -1,0 +1,32 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+
+// SERIAL
+#define SERIAL_BAUDRATE 115200
+
+
+// TFT ST7735S 80x160
+#define TFT_CS  5
+#define TFT_RST 4
+#define TFT_DC  2
+
+
+
+// KY-040
+#define ENCODER_CLK 32
+#define ENCODER_DT  33
+#define ENCODER_SW  25
+
+
+
+// BUTTON
+#define BUTTON_DEBOUNCE_MS 30
+#define BUTTON_LONG_PRESS_MS 800
+
+
+
+// ACTIONS
+#define MAX_ACTIONS 30
+
+#endif

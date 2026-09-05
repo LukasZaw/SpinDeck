@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpinDeck_Win_app", "SpinDeck_Win_app.csproj", "{6C09302D-9109-48BB-87A5-0E967D8A2B36}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C09302D-9109-48BB-87A5-0E967D8A2B36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C09302D-9109-48BB-87A5-0E967D8A2B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C09302D-9109-48BB-87A5-0E967D8A2B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C09302D-9109-48BB-87A5-0E967D8A2B36}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7EA29A2-B072-4EEC-87BD-926E2111F8D7}
+	EndGlobalSection
+EndGlobal
