@@ -75,7 +75,10 @@ namespace SpinDeck_Win_app.Communication
                     _serialPort.DataReceived -= SerialPort_DataReceived;
 
                     if (_serialPort.IsOpen)
+                    {
+                        _serialPort.WriteLine("DEVICE:STATUS|DISCONNECTED");
                         _serialPort.Close();
+                    }
 
                     _serialPort.Dispose();
                     _serialPort = null;

@@ -41,5 +41,7 @@ void loop()
 
   updateActionAnimation();
 
+  updateHostConnectionStatus();
+
   delay(1);
 }

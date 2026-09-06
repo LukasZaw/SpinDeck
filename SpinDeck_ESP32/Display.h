@@ -10,6 +10,18 @@
 // TFT
 extern Adafruit_ST7735 tft;
 
+enum DeviceDisplayStatus
+{
+  DEVICE_STATUS_IDLE,
+  DEVICE_STATUS_DISCONNECTED,
+  DEVICE_STATUS_READY,
+  DEVICE_STATUS_WAITING,
+  DEVICE_STATUS_SUCCESS,
+  DEVICE_STATUS_ERROR
+};
+
+void setDeviceDisplayStatus(DeviceDisplayStatus status);
+
 
 
 // INIT

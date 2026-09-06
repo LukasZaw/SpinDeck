@@ -12,6 +12,48 @@ Adafruit_ST7735 tft =
 bool actionAnimationActive = false;
 unsigned long actionAnimationStartTime = 0;
 uint8_t actionAnimationFrame = 0;
+DeviceDisplayStatus deviceDisplayStatus = DEVICE_STATUS_IDLE;
+
+
+uint16_t getStatusColor()
+{
+  switch (deviceDisplayStatus)
+  {
+    case DEVICE_STATUS_READY:
+      return ST77XX_GREEN;
+
+    case DEVICE_STATUS_WAITING:
+      return ST77XX_YELLOW;
+
+    case DEVICE_STATUS_SUCCESS:
+      return ST77XX_GREEN;
+
+    case DEVICE_STATUS_ERROR:
+      return ST77XX_RED;
+
+    case DEVICE_STATUS_IDLE:
+      return tft.color565(128, 128, 128);
+
+    case DEVICE_STATUS_DISCONNECTED:
+      return ST77XX_RED;
+
+    default:
+      return ST77XX_RED;
+  }
+}
+
+
+void drawStatusIndicator()
+{
+  tft.fillCircle(151, 8, 4, getStatusColor());
+}
+
+
+void setDeviceDisplayStatus(DeviceDisplayStatus status)
+{
+  deviceDisplayStatus = status;
+  drawStatusIndicator();
+}
 
 
 // INIT
@@ -22,6 +64,13 @@ void initDisplay()
   tft.setRotation(1);
 
   tft.fillScreen(ST77XX_BLACK);
+
+  uint8_t madctl = ST77XX_MADCTL_MY |
+                   ST77XX_MADCTL_MV |
+                   ST7735_MADCTL_BGR;
+  tft.sendCommand(ST77XX_MADCTL, &madctl, 1);
+
+  drawStatusIndicator();
 }
 
 
@@ -33,6 +82,7 @@ void startActionAnimation()
   actionAnimationFrame = 0;
 
   clearScreen();
+  setDeviceDisplayStatus(DEVICE_STATUS_WAITING);
   tft.setTextColor(ST77XX_WHITE);
   tft.setTextSize(2);
   tft.setCursor(17, 10);
@@ -78,6 +128,7 @@ void updateActionAnimation()
 void clearScreen()
 {
   tft.fillScreen(ST77XX_BLACK);
+  drawStatusIndicator();
 }
 
 
@@ -85,6 +136,7 @@ void clearScreen()
 void showDefaultScreen()
 {
   clearScreen();
+  drawStatusIndicator();
 
   tft.setTextColor(ST77XX_WHITE);
   tft.setTextSize(2);
@@ -106,6 +158,7 @@ void showDefaultScreen()
 void showTestScreen()
 {
   clearScreen();
+  drawStatusIndicator();
 
   tft.setTextColor(ST77XX_WHITE);
 
@@ -228,6 +281,7 @@ void displayAction(const String& name, const String& type, int selectedIndex, in
 {
   actionAnimationActive = false;
   clearScreen();
+  drawStatusIndicator();
 
   // HEADER
   tft.setTextColor(ST77XX_WHITE);

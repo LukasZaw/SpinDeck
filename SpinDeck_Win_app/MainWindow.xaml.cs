@@ -191,11 +191,17 @@ namespace SpinDeck_Win_app
 
                         if (!result.Succeeded)
                         {
+                            _serialManager.Send("DEVICE:STATUS|ERROR");
+
                             System.Windows.MessageBox.Show(
                                 result.ErrorMessage,
                                 "Action could not be executed",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Warning);
+                        }
+                        else
+                        {
+                            _serialManager.Send("DEVICE:STATUS|SUCCESS");
                         }
 
                         break;

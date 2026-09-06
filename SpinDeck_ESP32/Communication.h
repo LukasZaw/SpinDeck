@@ -6,5 +6,6 @@
 void initCommunication();
 void handleSerialInput();
 void handleCommand(const String& command);
+void updateHostConnectionStatus();
 
 #endif
