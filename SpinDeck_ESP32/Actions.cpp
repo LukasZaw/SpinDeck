@@ -33,9 +33,6 @@ void clearActions()
 
 
   displayNoAction();
-
-
-  Serial.println("OK:ACTION:CLEAR");
 }
 
 

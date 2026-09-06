@@ -1,17 +1,19 @@
 #include "Communication.h"
+#include "Config.h"
 #include "Display.h"
 #include "Actions.h"
+
+
+String serialBuffer = "";
+bool serialCommandOverflowed = false;
 
 
 // INIT
 void initCommunication()
 {
   Serial.begin(SERIAL_BAUDRATE);
-
+  serialBuffer.reserve(SERIAL_COMMAND_MAX_LENGTH);
 }
-
-
-String serialBuffer = "";
 
 // SERIAL INPUT
 void handleSerialInput()
@@ -22,6 +24,15 @@ void handleSerialInput()
 
     if (c == '\n')
     {
+      if (serialCommandOverflowed)
+      {
+        serialBuffer = "";
+        serialCommandOverflowed = false;
+        Serial.println("ERROR:COMMAND_TOO_LONG");
+
+        continue;
+      }
+
       serialBuffer.trim();
 
       if (serialBuffer.length() > 0)
@@ -39,7 +50,18 @@ void handleSerialInput()
     }
     else if (c != '\r')
     {
-      serialBuffer += c;
+      if (!serialCommandOverflowed)
+      {
+        if (serialBuffer.length() < SERIAL_COMMAND_MAX_LENGTH)
+        {
+          serialBuffer += c;
+        }
+        else
+        {
+          serialBuffer = "";
+          serialCommandOverflowed = true;
+        }
+      }
     }
   }
 }
