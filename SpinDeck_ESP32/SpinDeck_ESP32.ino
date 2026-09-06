@@ -39,5 +39,7 @@ void loop()
 
   handleSerialInput();
 
+  updateActionAnimation();
+
   delay(1);
 }

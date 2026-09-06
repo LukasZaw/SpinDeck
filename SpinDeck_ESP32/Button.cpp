@@ -1,4 +1,5 @@
 #include "Button.h"
+#include "Display.h"
 
 // BUTTON STATE
 bool lastButtonReading = HIGH;
@@ -63,6 +64,8 @@ void handleButton()
       if (!longPressTriggered && pressDuration < BUTTON_LONG_PRESS_MS)
       {
         clickCount++;
+
+        startActionAnimation();
 
         Serial.println("EVENT:BUTTON_CLICK");
       }

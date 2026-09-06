@@ -1,4 +1,5 @@
 #include "Display.h"
+#include "Actions.h"
 
 // TFT OBJECT
 Adafruit_ST7735 tft =
@@ -7,6 +8,10 @@ Adafruit_ST7735 tft =
     TFT_DC,
     TFT_RST
   );
+
+bool actionAnimationActive = false;
+unsigned long actionAnimationStartTime = 0;
+uint8_t actionAnimationFrame = 0;
 
 
 // INIT
@@ -17,6 +22,55 @@ void initDisplay()
   tft.setRotation(1);
 
   tft.fillScreen(ST77XX_BLACK);
+}
+
+
+// ACTION EXECUTION ANIMATION
+void startActionAnimation()
+{
+  actionAnimationActive = true;
+  actionAnimationStartTime = millis();
+  actionAnimationFrame = 0;
+
+  clearScreen();
+  tft.setTextColor(ST77XX_WHITE);
+  tft.setTextSize(2);
+  tft.setCursor(17, 10);
+  tft.println("Executing");
+}
+
+
+void updateActionAnimation()
+{
+  if (!actionAnimationActive)
+  {
+    return;
+  }
+
+  if (millis() - actionAnimationStartTime >= 1000)
+  {
+    actionAnimationActive = false;
+    refreshActionDisplay();
+
+    return;
+  }
+
+  static unsigned long lastFrameTime = 0;
+
+  if (millis() - lastFrameTime < 90)
+  {
+    return;
+  }
+
+  lastFrameTime = millis();
+
+  tft.fillRect(52, 38, 56, 24, ST77XX_BLACK);
+  tft.drawCircle(80, 50, 10, ST77XX_WHITE);
+
+  const int frameX = 80 + ((actionAnimationFrame % 8) * 7) - 24;
+  tft.fillCircle(frameX, 50, 3, ST77XX_WHITE);
+
+  actionAnimationFrame++;
 }
 
 
@@ -172,6 +226,7 @@ void showScreen()
 // DISPLAY ACTION
 void displayAction(const String& name, const String& type, int selectedIndex, int actionCount)
 {
+  actionAnimationActive = false;
   clearScreen();
 
   // HEADER

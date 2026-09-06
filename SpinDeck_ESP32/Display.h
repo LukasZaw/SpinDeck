@@ -29,6 +29,10 @@ void displayAction(
   int actionCount
 );
 
+void startActionAnimation();
+
+void updateActionAnimation();
+
 
 
 // BASIC DISPLAY
